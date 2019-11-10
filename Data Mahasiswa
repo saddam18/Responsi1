@@ -1,0 +1,152 @@
+#include <iostream>
+#include <conio.h>
+#include <string.h>
+#include <stdio.h>
+
+struct data
+{
+    char nama[30];
+    char nim[10];
+    int orkom,jarkm,db,so,pbo;
+};
+data mhs[10];
+
+int n,i,j,a,k,m;
+char kata[10],temp[10];
+
+void input()
+{
+//    clrscr();
+    printf("jumlah data:");scanf("%d",&n);
+    for(i=0;i<n;i++)
+    {
+        printf("\nData ke-%d\n",i+1);
+        printf("NIM :");scanf("%s",&mhs[i].nim);
+        printf("Nama :");scanf("%s",&mhs[i].nama);
+        printf("Orkom :");scanf("%d",&mhs[i].orkom);
+        printf("Jarkom :");scanf("%d",&mhs[i].jarkom);
+        printf("DataBase :");scanf("%d",&mhs[i].db);
+        printf("SO :");scanf("%d",&mhs[i].so);
+        printf("PBO :");scanf("%d",&mhs[i].pbo);
+    }
+}
+
+void output()
+{
+//    clrscr();
+    printf("Tampilkan Data Awal\n");
+    printf("+======================+\n");
+    printf("|No|NIM|Nama|Orkom|Jarkom|DataBase|SO|PBO|\n");
+    printf("|--------------------|\n");
+    printf("| | | | |\n");
+    for(i=0;i<n;i++)
+    {
+        printf("| | | | |\n");
+        gotoxy(3,5+i);printf("%d,i+1");
+        gotoxy(8,5+1);printf("%s",mhs[i].nim);
+        gotoxy(21,5+1);printf("%s",mhs[i].nama);
+        gotoxy(35,5+1);printf("%d\n",mhs[i].orkom);
+        gotoxy(35,5+1);printf("%d\n",mhs[i].jarkom);
+        gotoxy(35,5+1);printf("%d\n",mhs[i].db);
+        gotoxy(35,5+1);printf("%d\n",mhs[i].so);
+        gotoxy(35,5+1);printf("%d\n",mhs[i].pbo);
+    }
+
+    printf("+=====================+\n");
+}
+
+void urut()
+{
+    clrscr();
+    for(i=0;i<n;i++)
+    {
+        for(j=i+j;j<n;j++)
+        {
+            if(mhs[i].nim<mhs[j].nim)
+            {
+                data temp;
+                temp=mhs[i];
+                mhs[i]=mhs[j];
+                mhs[j]=temp;
+            }
+        }
+    }
+    clrscr();
+    printf(" Data Setelah Diurutkan\n");
+    printf("+=========================+\n");
+    printf("|No|NIM|Nama|Orkom|Jarkom|DataBase|SO|PBO\n");
+    printf("|---------------------------|\n");
+    printf("| | | | |\n");
+    for(i=0;i<n;i++)
+    {
+        printf("| | | | |\n");
+        gotoxy(3,5+i);printf("%d,i+1");
+        gotoxy(8,5+1);printf("%s",mhs[i].nim);
+        gotoxy(21,5+1);printf("%s",mhs[i].nama);
+        gotoxy(35,5+1);printf("%d\n",mhs[i].orkom);
+        gotoxy(35,5+1);printf("%d\n",mhs[i].jarkom);
+        gotoxy(35,5+1);printf("%d\n",mhs[i].db);
+        gotoxy(35,5+1);printf("%d\n",mhs[i].so);
+        gotoxy(35,5+1);printf("%d\n",mhs[i].pbo);
+    }
+
+    printf("+===========================+\n");
+}
+
+void cari()
+{
+
+    clrscr();
+    printf("Cari Nim :");scanf("%s",&kata);
+    {
+
+        printf("\nData %s Ditemukan\n",kata);
+        printf("NIM : %s\n",mhs[i].nim);
+        printf("Nama : %s\n",mhs[i].nama);
+        printf("Nilai : %d\n",mhs[i].orkom);
+        printf("Nilai : %d\n",mhs[i].jarkom);
+        printf("Nilai : %d\n",mhs[i].db);
+        printf("Nilai : %d\n",mhs[i].so);
+        printf("Nilai : %d\n",mhs[i].pbo);
+    }
+    else
+    {
+        printf("Data ke-%d Tidak Ada\n",i+1);
+    }
+}
+
+int main()
+{
+    int pil;
+    do{
+        clrscr();
+        printf("+=======================+\n");
+        printf("| Program Data Mhs |\n");
+        printf("-------------------\n");
+        printf("1. Input Data \n");
+        printf("2. Tampilkan Data \n");
+        printf("3. Cari Data \n");
+        printf("4. Keluar \n");
+        printf("|-----------------------|\n");
+        printf(" Pilih Menu : \n");
+        printf("+========================+\n");
+        gotoxy(16,9); scanf("%d",&pil);
+        switch(pil)
+        {
+            case 1: imput();getch();break;
+            case 2: {
+            output();
+            printf("\n\n Tekan enter untuk mengurutkan data\n");
+            getch();
+            urut();
+            getch();
+            break;
+            }
+            case 3: cari();getch();break;
+            case 4: break;
+            default : printf("input salah");
+        }
+    }
+    while(pil=0);
+    getch();
+}
